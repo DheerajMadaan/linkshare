@@ -11,8 +11,24 @@ class LinkResourceController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+
         params.max = Math.min(max ?: 10, 100)
-        respond LinkResource.list(params), model:[linkResourceInstanceCount: LinkResource.count()]
+        String userId=session.userId+"";
+        List<LinkResource> linkResourceInstance=LinkResource.createCriteria().list(params) {
+            topic{
+                or {
+                    user {
+                        eq('userId', userId)
+                    }
+                    eq('visibility', 'Public')
+                }
+
+            }
+
+
+        }
+        render view:'index', model:[linkResourceInstanceList:linkResourceInstance,linkResourceInstanceCount: linkResourceInstance.totalCount]
+
     }
 
     def show(LinkResource linkResourceInstance) {
@@ -22,28 +38,38 @@ class LinkResourceController {
     def create() {
         respond new LinkResource(params)
     }
+    def showLinks(){
+        String topicId=params.id;
+
+        Topic topic=Topic.get(topicId);
+        if(topic){
+            List<LinkResource>  linkResourceList=  LinkResource.findAllByTopic(topic);
+            render view:"index", model: [linkResourceInstanceList:linkResourceList,topicName:topic.topicName]
+
+
+        }
+    }
 
     @Transactional
-    def save(LinkResource linkResourceInstance) {
-        if (linkResourceInstance == null) {
-            notFound()
-            return
-        }
+    def save() {
+        if(!params.linkURL?.startsWith("http"))
+            params.linkURL="http://"+params.linkURL;
 
+        LinkResource linkResourceInstance=new LinkResource(params)
+
+
+         println linkResourceInstance.errors.allErrors
         if (linkResourceInstance.hasErrors()) {
             respond linkResourceInstance.errors, view:'create'
             return
         }
-
+        println "...................err....."+linkResourceInstance.hasErrors()
         linkResourceInstance.save flush:true
 
-        request.withFormat {
-            form multipartForm {
+
                 flash.message = message(code: 'default.created.message', args: [message(code: 'linkResource.label', default: 'LinkResource'), linkResourceInstance.id])
-                redirect linkResourceInstance
-            }
-            '*' { respond linkResourceInstance, [status: CREATED] }
-        }
+                redirect view:"show", model:linkResourceInstance
+
     }
 
     def edit(LinkResource linkResourceInstance) {

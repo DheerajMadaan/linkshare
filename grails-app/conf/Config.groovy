@@ -31,6 +31,22 @@ grails.mime.types = [ // the first one is the default format
     xml:           ['text/xml', 'application/xml']
 ]
 
+grails.resources.modules = {
+    application {
+        resource url:'/js/application.js'
+    }
+
+    prototype {
+        resource url:'/js/prototype.js'
+    }
+    scriptaculous {
+        resource url:'/js/scriptaculous.js'
+    }
+    jquery{
+        resource url:'/js/jquery-1.11.1.js'
+    }
+}
+
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
 

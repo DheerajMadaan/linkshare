@@ -2,10 +2,16 @@ package linkshare
 
 class UserController {
 
+
+    def logout(){
+       session.invalidate();
+       redirect(action: "login")
+    }
     def summary1(){
       User validUser=User.findByUserIdAndPassword(params.userId,params.password);
          if(validUser){
-            session.userId=params.userId
+            session.userId=validUser.id
+             println "user id is-----------"+session.userId
             render view:"welcome"
         }  else
         {

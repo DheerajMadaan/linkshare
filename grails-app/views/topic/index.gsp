@@ -4,19 +4,19 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'topic.label', default: 'Topic')}" />
+		<g:set var="entityName" value="${message(code: 'topic.label', default: 'Topic 1')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
+
+ 	</head>
 	<body>
 		<a href="#list-topic" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+
+
 		<div id="list-topic" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<h1><g:message code="default.list.label" args="[entityName]" />
+            <g:link class="create" action="create" style="float:right"><g:message code="default.new.label" args="[entityName]" /></g:link>
+
+            </h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -46,11 +46,32 @@
 
 					</tr>
 				</g:each>
+                <g:if test="${topicInstanceCount==0}">
+                    <tr class="even">
+                        <td colspan="4" >No Date Found</td>
+
+                    </tr>
+                </g:if>
+                %{--<tr>
+                 <td>
+                  <g:form action="ajax" name="ajaxForm">
+                     <g:textField name="test"></g:textField>
+
+                     <g:submitToRemote url="[action:'ajax']"  onSuccess="javascript:myFun(data)" value="hi"/>
+                  </g:form>
+                 </td>
+
+                </tr>--}%
 				</tbody>
-			</table>
+
+
+            </table>
+
 			<div class="pagination">
 				<g:paginate total="${topicInstanceCount ?: 0}" />
 			</div>
 		</div>
+
 	</body>
+
 </html>

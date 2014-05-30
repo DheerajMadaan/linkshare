@@ -9,11 +9,25 @@ import grails.transaction.Transactional
 class TopicController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+    /*static navigation = [
+            [group:'tabs', action:'save', title: 'My Timeline', order: 0],
+            [action: 'create', title: 'Global Timeline', order: 1]
+    ]*/
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Topic.list(params), model:[topicInstanceCount: Topic.count()]
-    }
+        def userId=session.userId;
+         User user=User.get(userId)
+        println "..........."+user
+
+        List<Topic> topicInstanceList= Topic.createCriteria().list(params){
+            or {
+                eq('visibility','Public')
+                eq('user', user)
+            }
+        };
+        render view:'index', model:[topicInstanceCount:topicInstanceList.totalCount,topicInstanceList:topicInstanceList]
+
+            }
 
     def show(Topic topicInstance) {
 
@@ -23,7 +37,14 @@ class TopicController {
     def create() {
         respond new Topic(params)
     }
-
+      def ajax(){
+     def fullUrl=params.test;
+     println "hi------------------------------"+params
+     def tinyUrl=new URL("http://tinyurl.com/api-create.php?url=${fullUrl}").text
+     render(contentType:"application/json") {
+         urls(small: tinyUrl, full: params.fullUrl)
+     }
+ }
     @Transactional
     def save(Topic topicInstance) {
         println topicInstance.validate()
@@ -32,8 +53,7 @@ class TopicController {
             notFound()
             return
         }
-
-        if (topicInstance.hasErrors()) {
+         if (topicInstance.hasErrors()) {
             respond topicInstance.errors, view:'create'
             return
         }

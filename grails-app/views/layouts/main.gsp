@@ -1,3 +1,4 @@
+<%@ page import="linkshare.User" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
@@ -15,13 +16,32 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<g:layoutHead/>
-		<g:javascript library="application"/>		
+		<g:javascript library="application"/>
+        <g:javascript library="jquery"/>
+        <r:layoutResources />
+        <nav:resources/>
 
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'logo.png')}" alt="Grails"/></a></div>
-		<g:layoutBody/>
+		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'logo.png')}" alt="Grails"/></a>
+        <div style="float:right">
+            Welcome ${session.userId} &nbsp;&nbsp;   <g:link controller="user" action="logout">Logout</g:link>
+        </div>
+        </div>
+        <div class="nav" role="navigation">
+        <ul>
+            <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+            <li><g:link class="list" action="index" controller="topic"><g:message code="default.topic.name"  default="Topic" /></g:link></li>
+            <li><g:link class="list" action="index" controller="documentResource"><g:message code="default.new.document" default="Documents" /></g:link></li>
+            <li><g:link class="list" action="index" controller="linkResource"><g:message code="default.new.document" default="Links" /></g:link></li>
+
+        </ul>
+        </div>
+    <nav:render group="tabs" />
+    <r:layoutResources />
+        <g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-	</body>
+
+    </body>
 </html>

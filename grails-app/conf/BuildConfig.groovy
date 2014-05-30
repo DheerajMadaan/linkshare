@@ -69,6 +69,7 @@ grails.project.dependency.resolution = {
         runtime ":resources:1.2.7"
         compile ":jquery-validation-ui:1.4.9"
         compile ":jquery-ui:1.10.3"
+        compile ":navigation:1.3.2"
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0.1"
         //runtime ":cached-resources:1.1"

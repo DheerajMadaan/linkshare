@@ -1,12 +1,17 @@
+import linkshare.Topic
 import linkshare.User
 
 class BootStrap {
 
     def init = { servletContext ->
-        User user=new User(userId:"1@1.com",password:"1",confirmPassword:"1", address:"1",emailId:"1@1.com");
-        println ".....validate............"+user.validate()
-        println "error---------"+user.errors.allErrors
+        User user=new User(userId:"1",password:"1",confirmPassword:"1", address:"1",emailId:"1@1.com");
         user.save();
+        Topic topic=new Topic(topicName: "User1",description: "This is for User 1",visibility: "Public",user: user)
+        topic.save();
+        user=new User(userId:"2",password:"1",confirmPassword:"1", address:"1",emailId:"2@2.com");
+        user.save();
+
+
     }
     def destroy = {
     }

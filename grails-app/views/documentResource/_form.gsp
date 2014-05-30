@@ -1,4 +1,25 @@
-<%@ page import="linkshare.DocumentResource" %>
+<%@ page import="linkshare.Topic; linkshare.DocumentResource" %>
+
+<g:if test="${!params.fromWhere && !"edit".equals(actionName)}">
+    <div class="fieldcontain ${hasErrors(bean: documentResourceInstance, field: 'topic.id', 'error')} required">
+        <label for="topic">
+            <g:message code="documentResource.topic.label" default="Topic Name" />
+            <span class="required-indicator">*</span>
+        </label>
+        <g:select name="topic.id" from="${ Topic.withCriteria(){
+            or {
+                eq("visibility", "Public")
+                user {
+                    eq("userId", (session.userId).toString())
+
+                }
+            }
+        }}" optionKey="id" optionValue="topicName"  style="width:200px" />
+
+    </div>
+
+</g:if>
+
 
 <div class="fieldcontain ${hasErrors(bean: documentResourceInstance, field: 'title', 'error')} required">
     <label for="title">
@@ -16,18 +37,19 @@
 		<g:message code="documentResource.description.label" default="Description" />
 		<span class="required-indicator">*</span>
 	</label>
-   <input type="file" name="fileName" />
+    <g:textField name="description" required="" value="${documentResourceInstance?.description}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: documentResourceInstance, field: 'documentSize', 'error')} required">
-    <label for="documentSize">
-		<g:message code="documentResource.documentSize.label" default="Document Size" />
+<div class="fieldcontain ${hasErrors(bean: documentResourceInstance, field: 'fileName', 'error')} required">
+    <label>
+		<g:message code="documentResource.documentSize.label" default="Upload File " />
 		<span class="required-indicator">*</span>
 	</label>
-    <g:textField name="documentSize" required="" value="${documentResourceInstance?.documentSize}"/>
-
-</div>
+  <input type="file" name="fileName"   />
 
 
+<g:if test="${params.fromWhere}">
+<g:hiddenField name="topic.id" value="${params.topic}" />
+</g:if>
 

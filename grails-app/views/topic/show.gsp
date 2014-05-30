@@ -1,5 +1,5 @@
 
-<%@ page import="linkshare.Topic" %>
+<%@ page import="linkshare.DocumentResource; linkshare.LinkResource; linkshare.Topic" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,18 +16,12 @@
 
 	<body>
 		<a href="#show-topic" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+
 		<div id="show-topic" class="content scaffold-show" role="main">
 			<div>
             <h1 ><g:message code="default.show.label" args="[entityName]" />
-            <g:link  controller="documentResource" action="create" params="[topic:topicInstance?.id]" style="float:right"> <g:message code="default.add.Document" default="Add Document" /></g:link>
-            <g:link  controller="linkResource" action="create" params="[topic:topicInstance?.id]" style="float:right;margin-right: 15px;"> <g:message code="default.add.Link" default="Add Link" /></g:link>
+            <g:link  controller="documentResource" action="create" params="[topic:topicInstance?.id,fromWhere:'topic']" style="float:right"> <g:message code="default.add.Document" default="Add Document" /></g:link>
+            <g:link  controller="linkResource" action="create" params="[topic:topicInstance?.id,fromWhere: 'topic']" style="float:right;margin-right: 15px;"> <g:message code="default.add.Link" default="Add Link" /></g:link>
 
             </h1>
 
@@ -71,6 +65,31 @@
 
                     </li>
                 </g:if>
+            <li class="fieldcontain">
+                <span id="user-label" class="property-label"><g:message code="topic.user.label" default="# of Documents" /></span>
+
+
+
+                <g:if test="${topicInstance?.resources.count{it.instanceOf(DocumentResource)}>0}">
+                    <span class="property-value" aria-labelledby="user-label"><g:link controller="documentResource" action="showDocuments" id="${topicInstance?.id}">${topicInstance?.resources.count{it.instanceOf(DocumentResource)}} </g:link></span>
+                </g:if>
+                <g:else>
+                         <span class="property-value" aria-labelledby="user-label">No Document Uploaded</span>
+                </g:else>
+
+            </li>
+            <li class="fieldcontain">
+                <span id="user-label" class="property-label"><g:message code="topic.user.label" default="# of Links" /></span>
+
+                <g:if test="${topicInstance?.resources.count{it.instanceOf(LinkResource)}>0}">
+
+                    <span class="property-value" aria-labelledby="user-label"><g:link controller="linkResource" action="showLinks" id="${topicInstance?.id}">${topicInstance?.resources.count{it.instanceOf(LinkResource)}} </g:link></span>
+                </g:if>
+                <g:else>
+                    <span class="property-value" aria-labelledby="user-label">No Link Found</span>
+                </g:else>
+
+            </li>
 			
 			</ol>
 			<g:form url="[resource:topicInstance, action:'delete']" method="DELETE">
