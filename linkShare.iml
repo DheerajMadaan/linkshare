@@ -84,6 +84,14 @@
           <root url="jar://$MAVEN_REPOSITORY$/javax/mail/javax.mail-api/1.5.1/javax.mail-api-1.5.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/javax/activation/activation/1.1/activation-1.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/com/sun/mail/javax.mail/1.5.1/javax.mail-1.5.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-spellchecker/2.4.1/lucene-spellchecker-2.4.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-snowball/2.4.1/lucene-snowball-2.4.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-queries/2.4.1/lucene-queries-2.4.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-analyzers/2.4.1/lucene-analyzers-2.4.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-highlighter/2.4.1/lucene-highlighter-2.4.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/2.4.1/lucene-core-2.4.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/compass-project/compass/2.2.1/compass-2.2.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
