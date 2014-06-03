@@ -1,4 +1,5 @@
 package linkshare
+import com.linkshare.co.LoginCommand
 
 class UserController {
 
@@ -7,15 +8,24 @@ class UserController {
        session.invalidate();
        redirect(action: "login")
     }
-    def summary1(){
-      User validUser=User.findByUserIdAndPassword(params.userId,params.password);
+    def summary1(LoginCommand loginCommand){
+
+
+        if(loginCommand.hasErrors()){
+
+             render (view: "login", model:[loginErrors: loginCommand.errors] )
+             return
+         }
+
+         User validUser=User.findByUserIdAndPassword(params.userId,params.password);
          if(validUser){
             session.userId=validUser.id
-             println "user id is-----------"+session.userId
             render view:"welcome"
         }  else
         {
-             render view:"login"
+
+             flash.message="UserName/Password do not match."
+             render (view: "login", model:[loginErrors: validUser.errors] )
         }
 
     }
@@ -43,5 +53,8 @@ class UserController {
     def show(User user) {
         respond user
     }
+
+
+
 
 }

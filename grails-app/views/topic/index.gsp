@@ -6,7 +6,6 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'topic.label', default: 'Topic 1')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
-
  	</head>
 	<body>
 		<a href="#list-topic" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -42,13 +41,13 @@
 						<td>${fieldValue(bean: topicInstance, field: "description")}</td>
 
 						<td>${fieldValue(bean: topicInstance, field: "user.userId")}</td>
-                        <td>${fieldValue(bean: topicInstance, field: "visibility")}</td>
+                        <td><gui:toolTip text="hello">${fieldValue(bean: topicInstance, field: "visibility")}</gui:toolTip> </td>
 
 					</tr>
 				</g:each>
                 <g:if test="${topicInstanceCount==0}">
                     <tr class="even">
-                        <td colspan="4" >No Date Found</td>
+                        <td colspan="4" >No Data Found</td>
 
                     </tr>
                 </g:if>

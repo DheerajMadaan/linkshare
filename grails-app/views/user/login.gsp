@@ -39,12 +39,27 @@
 <!-- Primary Page Layout -->
 
 <div class="container">
+    <div class="alert alert-error">
+
+        <g:hasErrors bean="${loginErrors}">
+
+            <ul class="errors" role="alert">
+                <g:eachError bean="${loginErrors}" var="error">
+                    <li><g:message error="${error}"/></li>
+
+                </g:eachError>
+            </ul>
+        </g:hasErrors>
+    </div>
+</div>
+<div class="container">
 
     <div class="form-bg">
         <g:form action="summary1" controller="user" name="loginForm" >
+
             <h2>Login</h2>
             <p>
-                <g:textField name="userId" placeholder="Username"></g:textField>
+                <g:textField name="userId" placeholder="Username" ></g:textField>
             </p>
             <p>
                 <g:textField name="password" placeholder="Password"></g:textField>

@@ -34,6 +34,7 @@
             <li><g:link class="list" action="index" controller="topic"><g:message code="default.topic.name"  default="Topic" /></g:link></li>
             <li><g:link class="list" action="index" controller="documentResource"><g:message code="default.new.document" default="Documents" /></g:link></li>
             <li><g:link class="list" action="index" controller="linkResource"><g:message code="default.new.document" default="Links" /></g:link></li>
+            <li><g:link class="list" action="index" controller="subscription"><g:message code="default.new.document" default="Subscribed Topics" /></g:link></li>
 
         </ul>
         </div>

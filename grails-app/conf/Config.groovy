@@ -45,6 +45,9 @@ grails.resources.modules = {
     jquery{
         resource url:'/js/jquery-1.11.1.js'
     }
+    bootstrap{
+        resource url:'/js/bootstrap.min.js'
+    }
 }
 
 // URL Mapping Cache Max Size, defaults to 5000
@@ -83,8 +86,8 @@ grails {
     mail {
         host = "smtp.gmail.com"
         port = 465
-        username = "dheerajmadaan1989@gmail.com"
-        password = "yourpassword"
+        username = "dheerajmadaangrp@gmail.com"
+        password = "3232"
         props = ["mail.smtp.auth":"true",
                  "mail.smtp.socketFactory.port":"465",
                  "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",

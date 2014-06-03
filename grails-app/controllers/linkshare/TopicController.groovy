@@ -35,6 +35,9 @@ class TopicController {
     }
 
     def create() {
+       params.suggestQuery=true
+        def content=Topic.search("usar1",params);
+        println "contents are=========================$content"
         respond new Topic(params)
     }
       def ajax(){
@@ -59,6 +62,25 @@ class TopicController {
         }
 
         topicInstance.save flush:true
+        User user=User.get(session.userId)
+        Subscription subscription=new Subscription();
+        topicInstance.addToSubscription(subscription);
+        user.addToSubscription(subscription);
+
+        println("Hello here ...... The subscription is================="+subscription.errors.allErrors)
+        subscription.save()
+
+      /*  sendMail {
+            to "dheeraj.madaan@intelligrape.com"
+            subject "Welcome to Hubbub!"
+            body """
+                Hi, Raj. Great to have you on board.
+            The Hubbub Team.
+            """
+
+        }*/
+
+
 
         request.withFormat {
             form multipartForm {
