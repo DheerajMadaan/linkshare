@@ -24,8 +24,8 @@ class UserController {
         }  else
         {
 
-             flash.message="UserName/Password do not match."
-             render (view: "login", model:[loginErrors: validUser.errors] )
+            loginCommand.errors.rejectValue('userId', 'userIdPassword.Mismatch') //
+             render (view: "login", model:[loginErrors: loginCommand.errors] )
         }
 
     }
@@ -46,7 +46,7 @@ class UserController {
      }
      else {
          user.save();
-         render view: "show.gsp" ,model:[user:user]
+         render view: "confirm.gsp" ,model:[user:user]
      }
 
     }

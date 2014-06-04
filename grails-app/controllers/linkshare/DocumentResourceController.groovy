@@ -26,7 +26,7 @@ class DocumentResourceController {
                 }
 
             }
-
+login
 
         }
         render view:'index', model:[documentResourceInstanceList:documentResourceInstance,documentResourceInstanceCount: documentResourceInstance.totalCount]

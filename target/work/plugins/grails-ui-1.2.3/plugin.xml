@@ -1,0 +1,47 @@
+<plugin name='grails-ui' version='1.2.3' grailsVersion='1.2 &gt; *'>
+  <author>Matthew Taylor</author>
+  <authorEmail>rhyolight@gmail.com</authorEmail>
+  <title>Grails UI</title>
+  <description>Provides a standard UI tag library for ajaxy widgets using YUI.</description>
+  <documentation>http://grails.org/plugins/grails-ui</documentation>
+  <type>GrailsUiGrailsPlugin</type>
+  <resources>
+    <resource>BootStrap</resource>
+    <resource>GrailsUIConfig</resource>
+    <resource>GrailsUiResources</resource>
+    <resource>org.grails.grailsui.ChartTagLibService</resource>
+    <resource>org.grails.grailsui.DatePickerService</resource>
+    <resource>org.grails.grailsui.DisplayTagLibService</resource>
+    <resource>org.grails.grailsui.GrailsUITagLibService</resource>
+    <resource>org.grails.grailsui.MenuTagLibService</resource>
+    <resource>org.grails.grailsui.ResourcesTagLibService</resource>
+    <resource>org.grails.grailsui.ChartTagLib</resource>
+    <resource>org.grails.grailsui.DataTableTagLib</resource>
+    <resource>org.grails.grailsui.DialogTagLib</resource>
+    <resource>org.grails.grailsui.DisplayTagLib</resource>
+    <resource>org.grails.grailsui.DragAndDropTagLib</resource>
+    <resource>org.grails.grailsui.InputTagLib</resource>
+    <resource>org.grails.grailsui.MenuTagLib</resource>
+    <resource>org.grails.grailsui.ResourcesTagLib</resource>
+    <resource>org.grails.grailsui.TabTagLib</resource>
+  </resources>
+  <repositories>
+    <repository name='grailsCentral' url='http://plugins.grails.org' />
+    <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
+    <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
+    <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+    <repository name='http://localhost:8081/artifactory/plugins-releases-local' url='http://localhost:8081/artifactory/plugins-releases-local/' />
+  </repositories>
+  <dependencies />
+  <plugins>
+    <runtime>
+      <plugin group='org.grails.plugins' name='bubbling' version='2.1.4' />
+    </runtime>
+  </plugins>
+  <runtimePluginRequirements>
+    <plugin name='yui' version='2.6.0 &gt; *' />
+    <plugin name='bubbling' version='2.1 &gt; *' />
+  </runtimePluginRequirements>
+  <behavior />
+</plugin>

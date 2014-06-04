@@ -38,22 +38,23 @@
 
 <!-- Primary Page Layout -->
 
-<div class="container">
-    <div class="alert alert-error">
 
-        <g:hasErrors bean="${loginErrors}">
+<div class="container" style="margin-top:150px">
+<g:hasErrors bean="${loginErrors}">
 
-            <ul class="errors" role="alert">
-                <g:eachError bean="${loginErrors}" var="error">
-                    <li><g:message error="${error}"/></li>
+    <div class="alert alert-error" align="center" style="margin-left:200px;margin-right:200px;">
 
-                </g:eachError>
-            </ul>
-        </g:hasErrors>
+
+
+        <ul class="errors" role="alert">
+            <g:eachError bean="${loginErrors}" var="error">
+                <li><g:message error="${error}"/></li>
+            </g:eachError>
+
+        </ul>
+
     </div>
-</div>
-<div class="container">
-
+</g:hasErrors>
     <div class="form-bg">
         <g:form action="summary1" controller="user" name="loginForm" >
 
@@ -62,7 +63,7 @@
                 <g:textField name="userId" placeholder="Username" ></g:textField>
             </p>
             <p>
-                <g:textField name="password" placeholder="Password"></g:textField>
+                <g:passwordField name="password" placeholder="Password" ></g:passwordField>
             </p>
             <g:submitButton  name="submit" value="Login"  style="margin-left:20px"   />
             <g:link action="register" style="text-decoration:none" >
