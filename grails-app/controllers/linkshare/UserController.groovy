@@ -55,6 +55,22 @@ class UserController {
     }
 
 
+    def inviteUsers(){
+          List<String> userList=User.withCriteria() {
+            projections{
+                property ("userId");
+
+            }
+             // ne("userId",session.userId?.toString());
+
+
+        }
+
+       render view: "inviteUsers" ,model:["userList":userList]
+
+    }
+
+
 
 
 }

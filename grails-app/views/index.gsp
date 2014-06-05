@@ -1,122 +1,87 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
-		<style type="text/css" media="screen">
-			#status {
-				background-color: #eee;
-				border: .2em solid #fff;
-				margin: 2em 2em 1em;
-				padding: 1em;
-				width: 12em;
-				float: left;
-				-moz-box-shadow: 0px 0px 1.25em #ccc;
-				-webkit-box-shadow: 0px 0px 1.25em #ccc;
-				box-shadow: 0px 0px 1.25em #ccc;
-				-moz-border-radius: 0.6em;
-				-webkit-border-radius: 0.6em;
-				border-radius: 0.6em;
-			}
+<%--
+  Created by IntelliJ IDEA.
+  User: dheerajmadaan
+  Date: 14/5/14
+  Time: 3:36 PM
+--%>
 
-			.ie6 #status {
-				display: inline; /* float double margin fix http://www.positioniseverything.net/explorer/doubled-margin.html */
-			}
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> 	<html lang="en"> <!--<![endif]-->
+<head>
 
-			#status ul {
-				font-size: 0.9em;
-				list-style-type: none;
-				margin-bottom: 0.6em;
-				padding: 0;
-			}
 
-			#status li {
-				line-height: 1.3;
-			}
+    <!-- General Metas -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	<!-- Force Latest IE rendering engine -->
+    <title>Login Form</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 
-			#status h1 {
-				text-transform: uppercase;
-				font-size: 1.1em;
-				margin: 0 0 0.3em;
-			}
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-			#page-body {
-				margin: 2em 1em 1.25em 18em;
-			}
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="${resource(dir:'css',file: 'base.css')}">
+    <link rel="stylesheet" href="${resource(dir:'css',file: 'skeleton.css')}">
+    <link rel="stylesheet" href="${resource(dir:'css',file: 'layout.css')}">
 
-			h2 {
-				margin-top: 1em;
-				margin-bottom: 0.3em;
-				font-size: 1em;
-			}
+</head>
+<body>
 
-			p {
-				line-height: 1.5;
-				margin: 0.25em 0;
-			}
 
-			#controller-list ul {
-				list-style-position: inside;
-			}
+<!-- Primary Page Layout -->
 
-			#controller-list li {
-				line-height: 1.3;
-				list-style-position: inside;
-				margin: 0.25em 0;
-			}
 
-			@media screen and (max-width: 480px) {
-				#status {
-					display: none;
-				}
+<div class="container" style="margin-top:150px">
+    <g:hasErrors bean="${loginErrors}">
 
-				#page-body {
-					margin: 0 1em 1em;
-				}
+        <div class="alert alert-error" align="center" style="margin-left:200px;margin-right:200px;">
 
-				#page-body h1 {
-					margin-top: 0;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="status" role="complementary">
-			<h1>Application Status</h1>
-			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${GroovySystem.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-			</ul>
-			<h1>Installed Plugins</h1>
-			<ul>
-				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-					<li>${plugin.name} - ${plugin.version}</li>
-				</g:each>
-			</ul>
-		</div>
-		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
 
-			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
-				<ul>
-					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-					</g:each>
-				</ul>
-			</div>
-		</div>
-	</body>
+
+            <ul class="errors" role="alert">
+                <g:eachError bean="${loginErrors}" var="error">
+                    <li><g:message error="${error}"/></li>
+                </g:eachError>
+
+            </ul>
+
+        </div>
+    </g:hasErrors>
+    <div class="form-bg">
+        <g:form action="summary1" controller="user" name="loginForm" >
+
+            <h2>Login</h2>
+            <p>
+                <g:textField name="userId" placeholder="Username" ></g:textField>
+            </p>
+            <p>
+                <g:passwordField name="password" placeholder="Password" ></g:passwordField>
+            </p>
+            <g:submitButton  name="submit" value="Login"  style="margin-left:20px"   />
+            <g:link action="register" controller="user" style="text-decoration:none" >
+                <input type="button"  name="register" value="Register"    />
+            </g:link>
+
+        </g:form>
+    </div>
+
+
+    <p class="forgot">Forgot your password? <a href="">Click here to reset it.</a></p>
+
+
+</div><!-- container -->
+
+<!-- JS  -->
+
+
+<!-- End Document -->
+</body>
 </html>

@@ -26,6 +26,7 @@ class ResourceUtilService {
            resourceStatusInstance.readStatus="unread".equals(readStatus)?"read":"unread";
            resourceStatusInstance.save();
            readStatus=resourceStatusInstance.readStatus;
+
        }
 
     }

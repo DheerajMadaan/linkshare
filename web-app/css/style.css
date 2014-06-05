@@ -1,0 +1,61 @@
+
+.crvBox2-left {
+    background-image: url(../images/crvBox2-lbg.png);
+    background-position: left top;
+    background-repeat: repeat-y;
+    width: 10px;
+}
+.crvBox2-bg {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+.crvBox2-top {
+    background-image: url("../images/crvBox2-tbg.png");
+    background-repeat: repeat-x;
+    background-position: left top;
+    height: 10px; width:100%;
+}
+.crvBox2-bg{
+    background:#ffffff;
+}
+.crvBox2-right {
+    background-image: url("../images/crvBox2-rbg.png");
+    background-repeat: repeat-y;
+    background-position: right top;
+    width:16px;
+}
+.crvBox2-botom {
+    background-image: url("../images/crvBox2-btbg.png");
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    height: 17px; width:100%;
+}
+.grBborder {
+    border-bottom: 1px solid rgb(201, 208, 255);
+}
+.hTextN15, a.hTextN15 {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    color: rgb(28, 76, 166);
+    text-decoration: none;
+}
+
+.grBborder {
+    border-bottom: 1px solid rgb(201, 208, 255);
+}
+.hTextN15, a.hTextN15 {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    color: rgb(28, 76, 166);
+    text-decoration: none;
+}
+.BlText12, a.BlText12 {
+    color: rgb(18, 18, 18);
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+}
+.atlRw04 {
+    background-color: rgb(236, 245, 255);
+}

@@ -48,6 +48,9 @@ grails.resources.modules = {
     bootstrap{
         resource url:'/js/bootstrap.min.js'
     }
+    colorbox{
+        resource url:'/js/jquery.colorbox.js'
+    }
 }
 
 // URL Mapping Cache Max Size, defaults to 5000
