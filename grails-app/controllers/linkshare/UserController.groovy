@@ -20,7 +20,7 @@ class UserController {
          User validUser=User.findByUserIdAndPassword(params.userId,params.password);
          if(validUser){
             session.userId=validUser.id
-            render view:"welcome"
+            redirect action: "index" , controller: "topic"
         }  else
         {
 

@@ -35,14 +35,12 @@ class TopicController {
     }
 
     def create() {
-       params.suggestQuery=true
-        def content=Topic.search("usar1",params);
-        println "contents are=========================$content"
         respond new Topic(params)
     }
-      def ajax(){
+
+
+    def ajax(){
      def fullUrl=params.test;
-     println "hi------------------------------"+params
      def tinyUrl=new URL("http://tinyurl.com/api-create.php?url=${fullUrl}").text
      render(contentType:"application/json") {
          urls(small: tinyUrl, full: params.fullUrl)
@@ -67,7 +65,6 @@ class TopicController {
         topicInstance.addToSubscription(subscription);
         user.addToSubscription(subscription);
 
-        println("Hello here ...... The subscription is================="+subscription.errors.allErrors)
         subscription.save()
 
       /*  sendMail {

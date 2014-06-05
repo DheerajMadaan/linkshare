@@ -5,6 +5,8 @@ import linkshare.User
 class BootStrap {
 
     def init = { servletContext ->
+
+       /*
         User user=new User(userId:"1",password:"1",confirmPassword:"1", address:"1",emailId:"1@1.com");
         user.save();
         Topic topic=new Topic(topicName: "User1",description: "This is for User 1",visibility: "Public",user: user)
@@ -19,7 +21,7 @@ class BootStrap {
         user.save();
 
 
-
+*/
 
 
     }
