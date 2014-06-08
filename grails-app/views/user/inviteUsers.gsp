@@ -23,6 +23,12 @@
 </head>
 
 <body>
+<g:if test="${flash.message}">
+    ${flash.message}
+</g:if>
+
+<g:form controller="invitation" action="saveUserInvitation">
+
 <table cellpadding="0" cellspacing="0" border="0">
 
   <tr>
@@ -56,18 +62,33 @@
             <g:if test="${userList}">
             <%
                 int count=0;
+                String classRow="atlRw04 BlText12";
             %>
+
                   <g:each in="${userList}" status="i" var="userName">
                       <%
                           count=i;
                       %>
+
                       <g:if test="${i%2==0}">
                           <tr>
                       </g:if>
-                   <td  colspan="1" class="atlRw04 BlText12" height="" align="right" valign="center" width="25.0%">
-                      <g:checkBox name="userName"></g:checkBox>
+
+                      <g:if test="${i%4==0 || i%4==1}">
+                          <%
+                              classRow="atlRw04 BlText12";
+                          %>
+                      </g:if>
+                          <g:else>
+                              <%
+                                  classRow="BlText12";
+                              %>
+                          </g:else>
+
+                   <td  colspan="1" class="${classRow}" height="" align="right" valign="center" width="25.0%">
+                      <g:checkBox name="userId" value="${userName}" id="${userName}" checked="false"></g:checkBox>
                   </td>
-                  <td  colspan="1" class="atlRw04 BlText12" valign="center" width="25.0%">${userName}</td>
+                  <td  colspan="1" class="${classRow}" valign="center" width="25.0%">${userName}</td>
                   <g:if test="${i%2!=0}">
                    </tr>
                   </g:if>
@@ -99,8 +120,16 @@
 
 
 </table>
+<table>
+    <tr>
+        <td>
+            <g:hiddenField name="topicId" value="${params.topicId}"></g:hiddenField>
+            <g:submitButton name="submit" class="new_buttonY">Invite Users</g:submitButton>
+        </td>
 
-
+    </tr>
+</table>
+           </g:form>
 
 </body>
 </html>

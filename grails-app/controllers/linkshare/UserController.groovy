@@ -61,7 +61,7 @@ class UserController {
                 property ("userId");
 
             }
-             // ne("userId",session.userId?.toString());
+              ne("userId",session.userId?.toString());
 
 
         }

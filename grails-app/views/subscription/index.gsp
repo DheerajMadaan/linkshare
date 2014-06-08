@@ -45,11 +45,11 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                         <td>${fieldValue(bean: subscriptionInstance, field: "topic.topicName")}</td>
 
-                        <td><g:link action="show" id="${subscriptionInstance.id}">${fieldValue(bean: subscriptionInstance, field: "subscriptionDate")}</g:link></td>
+                        <td><g:link action="show" id="${subscriptionInstance.id}"> ${fieldValue(bean: subscriptionInstance, field: "subscriptionDate")}</g:link></td>
 					
 
 						<td>${fieldValue(bean: subscriptionInstance, field: "user.userId")}</td>
-                        <td><g:link action="inviteUsers" controller="user" class="group"><img src="${resource(dir: 'images',file: 'invite.jpeg')}" height="20px" width="20px"></g:link></td>
+                        <td><g:link action="inviteUsers" controller="user" class="group" params="[topicId: subscriptionInstance.topic.id]"><img src="${resource(dir: 'images',file: 'invite.jpeg')}" height="20px" width="20px"></g:link></td>
 					
 					</tr>
 				</g:each>

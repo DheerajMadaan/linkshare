@@ -7,7 +7,8 @@ class User {
     String emailId
     String confirmPassword
     static  transients =['confirmPassword']
-    static hasMany = [topics:Topic,resourceStatus:ResourceStatus,subscription:Subscription]
+    static hasMany = [topics:Topic,resourceStatus:ResourceStatus,subscription:Subscription,invitation:Invitation]
+
     static constraints = {
       confirmPassword bindable:true
       userId(unique: true,nullable: false)

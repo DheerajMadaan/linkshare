@@ -15,7 +15,6 @@
 	</head>
 
 	<body>
-		<a href="#show-topic" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
 		<div id="show-topic" class="content scaffold-show" role="main">
 			<div>

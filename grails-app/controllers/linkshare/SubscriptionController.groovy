@@ -1,6 +1,6 @@
 package linkshare
 
-
+import linkshare.Subscription
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -19,7 +19,7 @@ class SubscriptionController {
         respond subscriptionInstance
     }
 
-    def create() {
+    def cmreate() {
         respond new Subscription(params)
     }
 

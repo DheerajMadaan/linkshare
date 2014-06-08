@@ -59,3 +59,141 @@
 .atlRw04 {
     background-color: rgb(236, 245, 255);
 }
+.new_buttonY{
+    FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, sans-serif;
+    border:1px solid #333333;
+    color:#000000;
+    background:url(../images/buttonY_bg.png) left top repeat-x;
+    padding:0px .5em .1em;
+    width:auto;
+    overflow:visible;
+    height:26px;
+
+}
+.new_buttonY:hover{
+    FONT-FAMILY:  Arial, Helvetica, sans-serif;
+    border:1px solid #333333;
+    color:#000000;
+    background:#FFEE2E;
+    FONT-SIZE: 12px;
+    width:auto;
+    overflow:visible;
+    text-decoration: none;
+    height:26px;
+    padding-top: 0px;
+    padding-right: 0.5em;
+    padding-bottom: 0.1em;
+    padding-left: 0.5em;
+}
+.tb_data {
+    FONT-SIZE: 12px; FONT-FAMILY:Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #E8F0FA
+}
+.ui.segment:last-child {
+    margin-bottom: 0px;
+}
+.ui.segment {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    margin: 1em 0px;
+    padding: 1em;
+    border-radius: 5px 5px 5px 5px;
+    -moz-box-sizing: border-box;
+}
+.ui.table {
+    font-size: 1em;
+}
+.ui.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.ui.table{
+    width:100%;
+    border-collapse:collapse
+}
+
+.ui.table td,.ui.table th,.ui.table tr{
+    border-collapse:collapse;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    box-sizing:border-box;
+    -webkit-transition:all .1s ease-out;
+    -moz-transition:all .1s ease-out;
+    transition:all .1s ease-out
+}
+
+.ui.table thead{
+    border-bottom:1px solid rgba(0,0,0,.03)
+}
+
+.ui.table tfoot th{
+    background-color:rgba(0,0,0,.03)
+}
+
+.ui.table th{
+    cursor:auto;
+    background-color:rgba(0,0,0,.05);
+    text-align:left;
+    color:rgba(0,0,0,.8);
+    padding:.5em .7em;
+    vertical-align:middle
+}
+
+.ui.table thead th:first-child{
+    border-radius:5px 0 0
+}
+
+.ui.table thead th:last-child{
+    border-radius:0 5px 0 0
+}
+
+.ui.table tfoot th:first-child{
+    border-radius:0 0 0 5px
+}
+
+.ui.table tfoot th:last-child{
+    border-radius:0 0 5px
+}
+
+.ui.table tfoot th:only-child{
+    border-radius:0 0 5px 5px
+}
+
+.ui.table td{
+    padding:.4em .7em;
+    vertical-align:middle
+}
+
+.ui.table tfoot{
+    border-top:1px solid rgba(0,0,0,.03)
+}
+
+.ui.table tfoot th{
+    font-weight:400;
+    font-style:italic
+}
+
+.ui.table tbody tr:nth-child(2n){
+    background-color:rgba(0,0,50,.02)
+}
+.ui.table tr.positive {
+    -webkit-box-shadow: 2px 0 0 #119000 inset;
+     box-shadow: 2px 0 0 #119000 inset;
+}
+.shadow{
+    margin-bottom:1.5em;border:1px solid #ccc;padding:1px;-khtml-box-shadow:rgba(0,0,0,0.5) 0px 0px 24px;-moz-box-shadow:rgba(0,0,0,0.5) 0px 0px 24px;box-shadow:rgba(0,0,0,0.5) 0px 0px 24px;-moz-border-radius:12px;-webkit-border-radius:12px;-opera-border-radius:12px;-khtml-border-radius:12px;border-radius:12px;
+}
+.ui.labeled.icon.button, .ui.labeled.icon.buttons .button {
+    position: relative;
+    padding-left: 4em !important;
+    padding-right: 1.4em !important;
+}
+.ui.blue.button, .ui.blue.buttons .button {
+    background-color: rgb(110, 207, 245);
+    color: rgb(255, 255, 255);
+    border-radius: .25em;
+}
+.ui.icon.button, .ui.icon.buttons .button {
+    padding: 0.8em;
+}
