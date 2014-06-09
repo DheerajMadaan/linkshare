@@ -58,7 +58,7 @@
     <div class="form-bg">
         <g:form action="summary1" controller="user" name="loginForm" >
 
-            <h2>Login</h2>
+            <h2>LinkShare</h2>
             <p>
                 <g:textField name="userId" placeholder="Username" ></g:textField>
             </p>
