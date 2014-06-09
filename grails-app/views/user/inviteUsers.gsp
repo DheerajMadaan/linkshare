@@ -14,8 +14,8 @@
 
     <script>
     $(document).ready(function(){
-        var height=$(document.body).height()+200;
-        var width=$(document.body).width()+200;
+        var height=$("#topTable").height()+200;
+        var width=$("#topTable").width()+200;
         parent.$.colorbox.resize({width:width, height:height});
 
     });
@@ -29,7 +29,7 @@
 
 <g:form controller="invitation" action="saveUserInvitation">
 
-<table cellpadding="0" cellspacing="0" border="0">
+<table cellpadding="0" cellspacing="0" border="0" id="topTable">
 
   <tr>
       <td valign="top" width="10">

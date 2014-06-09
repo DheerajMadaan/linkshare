@@ -7,9 +7,13 @@ public enum InvitationStatus {
     ACCEPTED('accepted'),
     REJECTED('rejected'),
     PENDING('pending')
-    private int invitationStatusCode
-    public String getInvitaionStatus(){
+    private String invitationStatusCode
+    public String getInvitationStatus(){
         return invitationStatusCode
+
+    }
+    InvitationStatus(String invitationStatusCode){
+        this.invitationStatusCode=invitationStatusCode
 
     }
 

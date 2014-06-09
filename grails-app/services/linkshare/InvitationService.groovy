@@ -14,9 +14,8 @@ class InvitationService {
    /*  def thread=Thread.start {*/
          invites.each {
              userName->
-                 Invitation invitation=new Invitation(invitationStatus: InvitationStatus(InvitationStatus.PENDING));
-
-                 println "here--------------"+invitedBy
+                 Invitation invitation=new Invitation();
+                 invitation.invitationStatus=InvitationStatus.PENDING;
                  invitation.invitedBy=User.findWhere(userId: invitedBy);
                  User user=User.findWhere(userId: userName);
                  Topic topic=Topic.get(Long.valueOf(topicId));
