@@ -56,15 +56,22 @@ class UserController {
 
 
     def inviteUsers(){
-          List<String> userList=User.withCriteria() {
+        /*  List<String> userList=User.withCriteria {
             projections{
                 property ("userId");
 
             }
               ne("userId",session.userId?.toString());
+              join('user.invitation')
+              isNull('invitation')
 
-
-        }
+        }*/
+        Long topicId=Long.valueOf(params.topicId);
+        Long id=session.userId;
+        println "The id is------------------"+id
+        String query= "select u.userId from User u where u.id!=? and  u.userId not in (select inv.user.userId from Invitation inv where inv.topic.id=?)";
+        List<String> userList =User.executeQuery(query,[id,topicId]);
+        println "user id is------------------"+userList;
 
        render view: "inviteUsers" ,model:["userList":userList]
 
