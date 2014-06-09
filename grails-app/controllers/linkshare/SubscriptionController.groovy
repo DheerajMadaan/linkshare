@@ -11,15 +11,23 @@ class SubscriptionController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+
         params.max = Math.min(max ?: 10, 100)
-        respond Subscription.list(params), model:[subscriptionInstanceCount: Subscription.count()]
+        List<Subscription> subscriptionInstance=Subscription.createCriteria().list(params) {
+
+                eq("user",User.get(session.userId))
+
+
+        }
+        render view:"index", model: [subscriptionInstanceList:subscriptionInstance, subscriptionInstanceCount:subscriptionInstance.totalCount]
+
     }
 
     def show(Subscription subscriptionInstance) {
         respond subscriptionInstance
     }
 
-    def cmreate() {
+    def create() {
         respond new Subscription(params)
     }
 

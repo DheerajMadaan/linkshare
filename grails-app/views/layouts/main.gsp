@@ -55,8 +55,8 @@
                         </a>
                         <ul class="dropdown-menu">
 
-                            <li><g:link class="list" action="index" controller="invitation"><g:message code="default.new.document" default="Sent" /></g:link></li>
-                            <li><g:link class="list" action="index" controller="invitation"><g:message code="default.new.document" default="Received" /></g:link></li>
+                            <li><g:link class="list" action="invitationSent" controller="invitation"><g:message code="default.new.document" default="Sent" /></g:link></li>
+                            <li><g:link class="list" action="invitationReceived" controller="invitation"><g:message code="default.new.document" default="Received" /></g:link></li>
                         </ul>
                 </ul>
 

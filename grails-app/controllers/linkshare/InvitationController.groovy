@@ -11,23 +11,45 @@ class InvitationController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
+    def invitationSent(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Invitation.list(params), model:[invitationInstanceCount: Invitation.count()]
+        List<Invitation> invitationInstance=Invitation.createCriteria().list(params) {
+            invitedBy{
+                eq("id",session.userId)
+            }
+
+        }
+        render view:"invitationSent", model: [invitationInstanceList:invitationInstance, invitationInstanceCount:invitationInstance.totalCount]
+
+    }
+
+    def invitationReceived(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        List<Invitation> invitationInstance=Invitation.createCriteria().list(params) {
+                    eq('user', User.get(session.userId))
+
+
+        }
+        render view:"invitationReceived", model: [invitationInstanceList:invitationInstance, invitationInstanceCount:invitationInstance.totalCount]
+    }
+    def changeInvitationStatus(){
+        Long topicId=Long.valueOf(params.topicId);
+        String status=params.status;
+        Long userId=session.userId;
+        boolean flag= invitationService.changeInvitationStatus(topicId,userId,status);
+        redirect action: 'invitationReceived'
+
+
+
     }
     def saveUserInvitation() {
         String invitedBy = session.userId;
         List<String> invites = params.list("userId")
-        println "here=============================="
         if (!invites) {
-            println "here..............................."
             flash.message = "Please check atleast one user."
             redirect controller: "user", action: "inviteUsers"
         } else {
             String topicId = params.topicId;
-            /*println  request.scheme
-            + request.serverName + request.serverPort + request.contextPath +
-                    request.forwardURI*/
             invitationService.saveUserInvitation(invites, invitedBy, topicId);
             redirect controller: "confirmation", action: "confirm"
         }
